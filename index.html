@@ -12,6 +12,11 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
+    <style>
+      .reveal img.diagram {
+        border:none;
+      }
+    </style>
     <link rel="stylesheet" href="css/reveal.min.css">
     <link rel="stylesheet" href="css/theme/default.css" id="theme">
 
@@ -115,6 +120,21 @@ open index.html
 </code></pre>
           </section>
 
+          <section>
+            <h3>Big ball of mud</h3>
+            <img class="diagram" src="images/big-ball-of-mud.svg">
+            <p><a href="http://www.laputan.org/mud/">http://www.laputan.org/mud/</a></p>
+          </section>
+
+          <section>
+            <h3>Model View Controller (MVC)</h3>
+            <img class="diagram" src="images/mvc.svg">
+          </section>
+
+          <section>
+            <h3>Model View Controller (MVC)</h3>
+            <img class="diagram" src="images/mvc-with-dom.svg">
+          </section>
         </section>
 
         <section>
@@ -123,8 +143,69 @@ open index.html
           </section>
 
           <section>
-            <h3>The TDD/BDD Cycle</h3>
-            <img src="images/bdd-cycle.svg">
+            <h3>The <del>TDD</del> BDD Cycle</h3>
+            <img class="diagram" src="images/bdd-cycle.svg">
+          </section>
+
+          <section>
+            <h3>Loading external files</h3>
+            <pre><code class="html">&lt;script type="text/javascript" src="./jasmine.js"&gt;&lt;/script&gt;</code></pre>
+          </section>
+
+          <section>
+            <h3>Describing behaviour with Jasmine</h3>
+            <pre><code class="javascript">describe("a thing", function () {
+  it("it does something", function () {
+    // code to prove it does something
+  });
+
+  it("it does something else too", function () {
+    // code to prove it does something else too
+  });
+});
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>Assertions</h3>
+            <p>
+              Assertions are just errors:
+            </p>
+            <pre><code class="javascript">if (result != "something")
+  throw new Error("Expected the result to be something");
+</code></pre>
+
+            <p>
+              Jasmine gives you a sweeter assertion syntax:
+            </p>
+            <pre><code class="javascript">expect(result).toBe("something");</code></pre>
+          </section>
+
+          <section>
+            <h3>Using spies in Jasmine</h3>
+            <pre><code class="javascript">describe("shootAt", function () {
+  it ("calls the hit callback with the cell", function () {
+    var cell = "cell";
+    var onHit = jasmine.createSpy("onHit callback");
+    shootAt(cell, onHit);
+    expect(onHit).toHaveBeenCalledWith(cell);
+  });
+});</code></pre>
+          </section>
+
+          <section>
+            <h3>Unit vs Acceptance tests</h3>
+            <p>
+              Acceptance tests describe <em>what</em> the system does.
+            </p>
+            <p>
+              Unit tests describe <em>how</em> it does it.
+            </p>
+          </section>
+
+          <section>
+            <h3>Unit vs Acceptance tests</h3>
+            <img class="diagram" src="images/testing-pyramid.svg">
           </section>
         </section>
 
